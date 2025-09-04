@@ -30,10 +30,10 @@
                 {% for i in tasks  %}
                 <div class="card m-1">
                     <div class="card-body">
-                         {{i.task}}
+                         {{i.task }} 
                         <span style="position: relative; float: right;">
-                            <a class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
-                            <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href="{% url "Mark_as_Done" i.id %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
+                            <a href="{% url "del_task" i.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             <a href="{% url "edittask" i.id %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                         
                         </span>
@@ -45,14 +45,22 @@
             <div class="col-md-5 col-lg-5">
                 <h5>Completed Tasks</h5>
                 <!-- List of all the tasks that have completed -->
+                {% for i in is_completed %}
                 <div class="card m-1">
                     <div class="card-body">
                         {% comment %} {% if is_completed == True %}
                         {{task}}
                         {% endif %} {% endcomment %}
-                        is completed
+                        {{i.task}}
+                        <span style="position: relative; float: right;">
+                            <a href="{% url "Mark_as_UnDone" i.id %}" class="btn btn-danger"><i class="fa fa-times"></i> Mark as UnDone</a>
+                            {% comment %} <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href="{% url "edittask" i.id %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a> {% endcomment %}
+                        
+                        </span>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
