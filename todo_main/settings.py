@@ -31,6 +31,10 @@ ALLOWED_HOSTS = [
     "todo-eb4x.onrender.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://todo-eb4x.onrender.com",
+]
+
 
 # Application definition
 
